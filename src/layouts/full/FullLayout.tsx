@@ -6,8 +6,6 @@ import { AppState } from 'src/store/Store';
 import Header from './vertical/header/Header';
 import Sidebar from './vertical/sidebar/Sidebar';
 import Customizer from './shared/customizer/Customizer';
-import Navigation from '../full/horizontal/navbar/Navigation';
-import HorizontalHeader from '../full/horizontal/header/Header';
 
 const MainWrapper = styled('div')(() => ({
   display: 'flex',
@@ -36,13 +34,17 @@ const FullLayout: FC = () => {
       {/* ------------------------------------------- */}
       {/* Sidebar */}
       {/* ------------------------------------------- */}
-      {customizer.isHorizontal ? '' : <Sidebar />}
+      <Sidebar />
       {/* ------------------------------------------- */}
       {/* Main Wrapper */}
       {/* ------------------------------------------- */}
       <PageWrapper
         className="page-wrapper"
         sx={{
+          backgroundColor:
+            customizer.activeMode === 'dark'
+              ? '#181818'
+              : '#F8F8F8',
           ...(customizer.isCollapse && {
             [theme.breakpoints.up('lg')]: { ml: `${customizer.MiniSidebarWidth}px` },
           }),
@@ -51,9 +53,8 @@ const FullLayout: FC = () => {
         {/* ------------------------------------------- */}
         {/* Header */}
         {/* ------------------------------------------- */}
-        {customizer.isHorizontal ? <HorizontalHeader /> : <Header />}
-        {/* PageContent */}
-        {customizer.isHorizontal ? <Navigation /> : ''}
+        <Header />
+
         <Container
           sx={{
             maxWidth: customizer.isLayout === 'boxed' ? 'lg' : '100%!important',

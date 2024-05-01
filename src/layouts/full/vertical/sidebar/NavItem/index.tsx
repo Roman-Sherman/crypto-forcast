@@ -51,25 +51,35 @@ const NavItem = ({ item, level, pathDirect, hideMenu, onClick }: ItemType) => {
 
   const ListItemStyled = styled(ListItemButton)(() => ({
     whiteSpace: 'nowrap',
-    marginBottom: '2px',
+    marginBottom: '10px',
     padding: '8px 10px',
     borderRadius: `${customizer.borderRadius}px`,
     backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
+    transition: 'all 0.2s ease',
     color:
       level > 1 && pathDirect === item?.href
         ? `${theme.palette.primary.main}!important`
         : theme.palette.text.secondary,
     paddingLeft: hideMenu ? '10px' : level > 2 ? `${level * 15}px` : '10px',
     '&:hover': {
-      backgroundColor: theme.palette.primary.light,
-      color: theme.palette.primary.main,
+      background: 
+        customizer.activeMode === 'dark' 
+            ? 'linear-gradient(to right, rgba(48, 48, 48, 1), rgba(33, 33, 33, 0))'
+            : 'linear-gradient(to right, rgba(238, 238, 238), rgba(255, 255, 255, 0))',
+      color: '#24B47E',
     },
     '&.Mui-selected': {
-      color: 'white',
-      backgroundColor: theme.palette.primary.main,
+      color: '#24B47E',
+      background: 
+        customizer.activeMode === 'dark' 
+          ? 'linear-gradient(to right, rgba(48, 48, 48, 1), rgba(33, 33, 33, 0))'
+          : 'linear-gradient(to right, rgba(238, 238, 238), rgba(255, 255, 255, 0))',
       '&:hover': {
-        backgroundColor: theme.palette.primary.main,
-        color: 'white',
+        background: 
+          customizer.activeMode === 'dark' 
+            ? 'linear-gradient(to right, rgba(48, 48, 48, 1), rgba(33, 33, 33, 0))'
+            : 'linear-gradient(to right, rgba(238, 238, 238), rgba(255, 255, 255, 0))',
+        color: '#24B47E',
       },
     },
   }));

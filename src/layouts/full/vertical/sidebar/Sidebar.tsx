@@ -4,7 +4,6 @@ import Logo from '../../shared/logo/Logo';
 import { useSelector, useDispatch } from 'src/store/Store';
 import { hoverSidebar, toggleMobileSidebar } from 'src/store/customizer/CustomizerSlice';
 import Scrollbar from 'src/components/custom-scroll/Scrollbar';
-import { Profile } from './SidebarProfile/Profile';
 import { AppState } from 'src/store/Store';
 
 const Sidebar = () => {
@@ -49,6 +48,10 @@ const Sidebar = () => {
           variant="permanent"
           PaperProps={{
             sx: {
+              backgroundColor:
+                customizer.activeMode === 'dark'
+                  ? '#212121'
+                  : '#FFFFFF',
               transition: theme.transitions.create('width', {
                 duration: theme.transitions.duration.shortest,
               }),
@@ -77,7 +80,6 @@ const Sidebar = () => {
               {/* ------------------------------------------- */}
               <SidebarItems />
             </Scrollbar>
-            <Profile />
           </Box>
         </Drawer>
       </Box>
@@ -94,11 +96,10 @@ const Sidebar = () => {
         sx: {
           width: customizer.SidebarWidth,
 
-          // backgroundColor:
-          //   customizer.activeMode === 'dark'
-          //     ? customizer.darkBackground900
-          //     : customizer.activeSidebarBg,
-          // color: customizer.activeSidebarBg === '#ffffff' ? '' : 'white',
+          backgroundColor:
+            customizer.activeMode === 'dark'
+              ? '#212121'
+              : '#FFFFFF',
           border: '0 !important',
           boxShadow: (theme) => theme.shadows[8],
         },

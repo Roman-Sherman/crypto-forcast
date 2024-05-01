@@ -377,8 +377,7 @@ const components: any = (theme: Theme) => {
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          borderLeft: `1px solid ${theme.palette.grey[100]}`,
-          borderRight: `1px solid ${theme.palette.grey[100]}`,
+          border: 'none',
         },
       },
     },
