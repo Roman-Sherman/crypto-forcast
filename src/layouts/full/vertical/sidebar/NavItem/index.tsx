@@ -53,13 +53,9 @@ const NavItem = ({ item, level, pathDirect, hideMenu, onClick }: ItemType) => {
     whiteSpace: 'nowrap',
     marginBottom: '10px',
     padding: '8px 10px',
-    borderRadius: `${customizer.borderRadius}px`,
     backgroundColor: level > 1 ? 'transparent !important' : 'inherit',
     transition: 'all 0.2s ease',
-    color:
-      level > 1 && pathDirect === item?.href
-        ? `${theme.palette.primary.main}!important`
-        : theme.palette.text.secondary,
+    color: customizer.activeMode === 'dark' ? '#808080' : '#A8A8A8',
     paddingLeft: hideMenu ? '10px' : level > 2 ? `${level * 15}px` : '10px',
     '&:hover': {
       background: 

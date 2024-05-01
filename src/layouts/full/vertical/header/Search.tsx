@@ -12,6 +12,7 @@ import {
   TextField,
   ListItemButton,
 } from '@mui/material';
+import { useSelector, AppState } from 'src/store/Store';
 import { IconSearch, IconX } from '@tabler/icons';
 import Menuitems from '../sidebar/MenuItems';
 import { Link } from 'react-router-dom';
@@ -26,6 +27,7 @@ interface menuType {
 
 const Search = () => {
   // drawer top
+  const customizer = useSelector((state: AppState) => state.customizer);
   const [showDrawer2, setShowDrawer2] = useState(false);
   const [search, setSerach] = useState('');
 
@@ -47,13 +49,12 @@ const Search = () => {
     <>
       <IconButton
         aria-label="show 4 new mails"
-        color="inherit"
         aria-controls="search-menu"
         aria-haspopup="true"
         onClick={() => setShowDrawer2(true)}
         size="large"
       >
-        <IconSearch size="16" />
+        <IconSearch size="20" color={customizer.activeMode === 'dark' ? '#808080' : '#181818'} />
       </IconButton>
       <Dialog
         open={showDrawer2}

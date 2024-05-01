@@ -7,9 +7,11 @@ const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
 const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')));
 
 /* ****Pages***** */
-const SamplePage = Loadable(lazy(() => import('../views/sample-page/SamplePage')));
 const SignInPage = Loadable(lazy(() => import('../views/authentication/authForms/AuthSignIn')));
 const SignUpPage = Loadable(lazy(() => import('../views/authentication/authForms/AuthSignUp')));
+const DashboardPage = Loadable(lazy(() => import('../views/dashboard/Dashboard')));
+const PredictionPage = Loadable(lazy(() => import('../views/prediction/Prediction')));
+const PortfolioPage = Loadable(lazy(() => import('../views/portfolio/Portfolio')));
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
 
 const Router = [
@@ -17,8 +19,10 @@ const Router = [
     path: '/',
     element: <FullLayout />,
     children: [
-      { path: '/', element: <Navigate to="/sample-page" /> },
-      { path: '/sample-page', exact: true, element: <SamplePage /> },
+      { path: '/', element: <Navigate to="/dashboard" /> },
+      { path: '/dashboard', exact: true, element: <DashboardPage /> },
+      { path: '/prediction', exact: true, element: <PredictionPage /> },
+      { path: '/portfolio', exact: true, element: <PortfolioPage /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },

@@ -1,14 +1,11 @@
 import { IconButton, Box, AppBar, useMediaQuery, Toolbar, styled, Stack } from '@mui/material';
 
 import { useSelector, useDispatch } from 'src/store/Store';
-import { toggleSidebar, toggleMobileSidebar } from 'src/store/customizer/CustomizerSlice';
-import { IconMenu2 } from '@tabler/icons';
+import { setDarkMode, toggleSidebar, toggleMobileSidebar } from 'src/store/customizer/CustomizerSlice';
+import { IconMenu2, IconMoon, IconSun } from '@tabler/icons';
 import Profile from './Profile';
 import Search from './Search';
 import { AppState } from 'src/store/Store';
-
-import WbSunnyTwoToneIcon from '@mui/icons-material/WbSunnyTwoTone';
-import DarkModeTwoToneIcon from '@mui/icons-material/DarkModeTwoTone';
 
 const Header = () => {
   const lgUp = useMediaQuery((theme: any) => theme.breakpoints.up('lg'));
@@ -42,7 +39,7 @@ const Header = () => {
           aria-label="menu"
           onClick={lgUp ? () => dispatch(toggleSidebar()) : () => dispatch(toggleMobileSidebar())}
         >
-          <IconMenu2 size="20" />
+          <IconMenu2 size="20" color={customizer.activeMode === 'dark' ? '#808080' : '#181818'} />
         </IconButton>
 
         <Box flexGrow={1} />
@@ -55,9 +52,12 @@ const Header = () => {
           {/* ------------------------------------------- */}
           {/* Theme Button */}
           {/* ------------------------------------------- */}
-          <IconButton>
-            <WbSunnyTwoToneIcon />
-            <DarkModeTwoToneIcon />
+          <IconButton onClick={() => dispatch(setDarkMode(customizer.activeMode === 'dark' ? 'light' : 'dark'))}>
+            {
+              customizer.activeMode === 'dark'
+                ? <IconMoon size="20" color='#808080' />
+                : <IconSun size="20" color='#181818' />
+            }
           </IconButton>
 
           <Profile />

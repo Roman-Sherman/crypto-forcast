@@ -5,7 +5,6 @@ import { Outlet } from 'react-router-dom';
 import { AppState } from 'src/store/Store';
 import Header from './vertical/header/Header';
 import Sidebar from './vertical/sidebar/Sidebar';
-import Customizer from './shared/customizer/Customizer';
 
 const MainWrapper = styled('div')(() => ({
   display: 'flex',
@@ -70,7 +69,6 @@ const FullLayout: FC = () => {
           {/* End Page */}
           {/* ------------------------------------------- */}
         </Container>
-        <Customizer />
       </PageWrapper>
     </MainWrapper>
   );
