@@ -32,7 +32,7 @@ const DashboardCard = ({
             enabled: false,
         },
         stroke: {
-            width: '3',
+            width: '2',
             curve: 'smooth',
         },
         colors: dataSource?.percent_change >= 0 ? ['#1CBF67'] : ['#FF5F52'],
