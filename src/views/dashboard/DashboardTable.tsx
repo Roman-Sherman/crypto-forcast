@@ -84,7 +84,7 @@ const DashboardTable = () => {
                         enabled: false,
                     },
                     stroke: {
-                        width: '3',
+                        width: '2',
                         curve: 'smooth',
                     },
                     colors: record?.percent_change >= 0 ? ['#1CBF67'] : ['#FF5F52'],
