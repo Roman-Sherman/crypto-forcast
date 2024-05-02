@@ -35,7 +35,7 @@ const DashboardCard = ({
             width: '3',
             curve: 'smooth',
         },
-        colors: dataSource?.percent_change >= 0 ? ['#1CBF67'] : ['#FF3030'],
+        colors: dataSource?.percent_change >= 0 ? ['#1CBF67'] : ['#FF5F52'],
         fill: {
             gradient: {
                 shade: customizer.activeMode === 'dark' ? 'dark' : 'light',
@@ -101,13 +101,13 @@ const DashboardCard = ({
                 {
                     dataSource?.percent_change >= 0
                         ? <IconTrendingUp color='#1CBF67' />
-                        : <IconTrendingDown color='#FF3030' />
+                        : <IconTrendingDown color='#FF5F52' />
                 }
             </Box>
             <Box className='dashboard-card-graph'>
                 <div style={{ width: '100px' }}>
                     <p className='crypto-price'>${dataSource?.latest}</p>
-                    <p className='crypto-raise' style={{ color: dataSource?.percent_change >= 0 ? '#1CBF67' : '#FF3030' }}>
+                    <p className='crypto-raise' style={{ color: dataSource?.percent_change >= 0 ? '#1CBF67' : '#FF5F52' }}>
                         {
                             dataSource?.percent_change
                                 ? (dataSource?.percent_change * 100).toFixed(2)

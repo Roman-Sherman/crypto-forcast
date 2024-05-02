@@ -2,8 +2,6 @@ import { useSelector } from "src/store/Store";
 import { Swiper, SwiperSlide } from "swiper/react";
 import DashboardCard from "src/components/shared/DashboardCard";
 
-
-
 import './Dashboard.css';
 
 const DashboardCards = () => {
