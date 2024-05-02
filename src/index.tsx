@@ -7,6 +7,9 @@ import { store } from './store/Store';
 import Spinner from './views/spinner/Spinner';
 import './utils/i18n';
 
+import 'swiper/css';
+import 'swiper/css/pagination';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>

@@ -16,7 +16,8 @@ const DashboardCard = ({
 
     const seriesareachart = [
         {
-            data: dataSource?.prices.slice(0, 20),
+            name: 'crypto price graph',
+            data: dataSource?.prices?.slice(0, 10),
         }
     ];
 
@@ -78,20 +79,20 @@ const DashboardCard = ({
     };
 
     const CryptoCard = styled(Card)(() => ({
-        width: '320px',
-        height: '200px',
+        width: '280px',
+        height: '180px',
         background: customizer.activeMode === 'dark' ? '#212121' : '#FFFFFF'
     }));
 
     return (
         <CryptoCard
-            sx={{ padding: '10px 20px', border: !customizer.isCardShadow ? `1px solid ${borderColor}` : 'none', borderRadius: 3 }}
+            sx={{ margin: 'auto', padding: '10px 20px', border: !customizer.isCardShadow ? `1px solid ${borderColor}` : 'none', borderRadius: 3 }}
             elevation={customizer.isCardShadow ? 9 : 0}
             variant={!customizer.isCardShadow ? 'outlined' : undefined}
         >
             <Box className='dashboard-card-crypto'>
                 <div className='crypto-info'>
-                    <Avatar sx={{ width: 30, height: 30, marginRight: 2 }} src={dataSource?.image_url} alt='' />
+                    <Avatar sx={{ width: 35, height: 35, marginRight: 2 }} src={dataSource?.image_url} alt='' />
                     <div>
                         <p className='crypto-name'>{dataSource?.name}</p>
                         <p className='crypto-base'>{dataSource?.base}</p>
@@ -104,7 +105,7 @@ const DashboardCard = ({
                 }
             </Box>
             <Box className='dashboard-card-graph'>
-                <div style={{ width: '120px' }}>
+                <div style={{ width: '100px' }}>
                     <p className='crypto-price'>${dataSource?.latest}</p>
                     <p className='crypto-raise' style={{ color: dataSource?.percent_change >= 0 ? '#1CBF67' : '#FF3030' }}>
                         {
@@ -115,7 +116,7 @@ const DashboardCard = ({
                     </p>
                 </div>
                 <div className='crypto-graph'>
-                    <Chart options={optionsareachart} series={seriesareachart} type="area" width={180} height={120} />
+                    <Chart options={optionsareachart} series={seriesareachart} type="area" width={160} height={120} />
                 </div>
             </Box>
         </CryptoCard>

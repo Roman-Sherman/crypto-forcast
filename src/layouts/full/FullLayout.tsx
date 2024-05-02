@@ -47,6 +47,7 @@ const FullLayout: FC = () => {
           ...(customizer.isCollapse && {
             [theme.breakpoints.up('lg')]: { ml: `${customizer.MiniSidebarWidth}px` },
           }),
+          width: "100%"
         }}
       >
         {/* ------------------------------------------- */}
@@ -54,11 +55,11 @@ const FullLayout: FC = () => {
         {/* ------------------------------------------- */}
         <Header />
 
-        <Container sx={{ maxWidth: '100%!important' }} >
+        <Container sx={{ maxWidth: '100%!important', width: '100%' }} >
           {/* ------------------------------------------- */}
           {/* PageContent */}
           {/* ------------------------------------------- */}
-          <Box sx={{ minHeight: 'calc(100vh - 170px)' }}>
+          <Box sx={{ minHeight: 'calc(100vh - 170px)', width: '100%' }}>
             <Outlet />
           </Box>
           {/* ------------------------------------------- */}

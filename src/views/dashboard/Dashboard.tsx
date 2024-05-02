@@ -16,15 +16,15 @@ const DashboardPage = () => {
 
     return (
         <Grid container>
-            <Grid item xs={9}>
-                <Box>
+            <Grid item xs={12} md={9}>
+                <Box sx={{ width: "100%" }}>
                     <DashboardCards />
                 </Box>
                 <Box>
                     <DashboardTable />
                 </Box>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
                 <DashboardList />
             </Grid>
         </Grid>

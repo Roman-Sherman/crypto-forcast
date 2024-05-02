@@ -22,6 +22,7 @@
 }
 
 .dashboard-card-graph {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
 }
@@ -29,11 +30,19 @@
 .dashboard-card-graph .crypto-price {
     font-size: 24px;
     font-weight: bold;
-    line-height: 10px;
+    line-height: 0px;
 }
 
 .dashboard-card-graph .crypto-raise {
     font-size: 14px;
     font-weight: bold;
-    line-height: 10px;
+    line-height: 30px;
+}
+
+.dashboard-card-graph .crypto-graph {
+    margin-top: -20px;
+}
+
+.dashboard-card-swiper {
+    
 }
