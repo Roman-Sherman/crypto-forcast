@@ -1,6 +1,15 @@
+import { Box, Typography } from "@mui/material";
+import { DashboardTable } from "../dashboard/DashboardTable";
+
 const PredictionPage = () => {
     return (
-        <div></div>
+        <Box>
+            <Typography variant="h3" sx={{ marginBottom: 2 }}>Crypto Prediction</Typography>
+
+            <Box>
+                <DashboardTable />
+            </Box>
+        </Box>
     )
 }
 
