@@ -1,0 +1,39 @@
+.dashboard-card-crypto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-card-crypto .crypto-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-card-crypto .crypto-name {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 10px;
+}
+
+.dashboard-card-crypto .crypto-base {
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.dashboard-card-graph {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-card-graph .crypto-price {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 10px;
+}
+
+.dashboard-card-graph .crypto-raise {
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 10px;
+}

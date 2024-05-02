@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import CustomizerReducer from './customizer/CustomizerSlice';
+import CryptoReducer from './crypto/CryptoSlice';
 import { combineReducers } from 'redux';
 import {
   useDispatch as useAppDispatch,
@@ -10,11 +11,13 @@ import {
 export const store = configureStore({
   reducer: {
     customizer: CustomizerReducer,
+    cryptoReducer: CryptoReducer,
   },
 });
 
 const rootReducer = combineReducers({
   customizer: CustomizerReducer,
+  cryptoReducer: CryptoReducer,
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

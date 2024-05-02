@@ -54,11 +54,7 @@ const FullLayout: FC = () => {
         {/* ------------------------------------------- */}
         <Header />
 
-        <Container
-          sx={{
-            maxWidth: customizer.isLayout === 'boxed' ? 'lg' : '100%!important',
-          }}
-        >
+        <Container sx={{ maxWidth: '100%!important' }} >
           {/* ------------------------------------------- */}
           {/* PageContent */}
           {/* ------------------------------------------- */}

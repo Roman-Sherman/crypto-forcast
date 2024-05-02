@@ -1,83 +1,125 @@
 import React from 'react';
-import { useTheme } from '@mui/material/styles';
-import { Card, CardContent, Typography, Stack, Box } from '@mui/material';
-import { useSelector } from 'src/store/Store';
-import { AppState } from 'src/store/Store';
-
-type Props = {
-  title?: string;
-  subtitle?: string;
-  action?: JSX.Element | any;
-  footer?: JSX.Element;
-  cardheading?: string | JSX.Element;
-  headtitle?: string | JSX.Element;
-  headsubtitle?: string | JSX.Element;
-  children?: JSX.Element;
-  middlecontent?: string | JSX.Element;
-};
+import { styled, useTheme } from '@mui/material/styles';
+import { Card, Box, Avatar } from '@mui/material';
+import { AppState, useSelector } from 'src/store/Store';
+import { IconTrendingUp, IconTrendingDown } from '@tabler/icons';
+import Chart, { Props } from 'react-apexcharts';
+import './DashboardCard.css';
 
 const DashboardCard = ({
-  title,
-  subtitle,
-  children,
-  action,
-  footer,
-  cardheading,
-  headtitle,
-  headsubtitle,
-  middlecontent,
-}: Props) => {
-  const customizer = useSelector((state: AppState) => state.customizer);
+    dataSource
+}: any) => {
+    const customizer = useSelector((state: AppState) => state.customizer);
 
-  const theme = useTheme();
-  const borderColor = theme.palette.grey[100];
+    const theme = useTheme();
+    const borderColor = theme.palette.grey[100];
 
-  return (
-    <Card
-      sx={{ padding: 0, border: !customizer.isCardShadow ?  `1px solid ${borderColor}` : 'none' }}
-      elevation={customizer.isCardShadow ? 9 : 0}
-      variant={!customizer.isCardShadow ? 'outlined' : undefined}
-    >
-      {cardheading ? (
-        <CardContent>
-          <Typography variant="h5">{headtitle}</Typography>
-          <Typography variant="subtitle2" color="textSecondary">
-            {headsubtitle}
-          </Typography>
-        </CardContent>
-      ) : (
-        <CardContent sx={{p: "30px"}}>
-          {title ? (
-            <Stack
-              direction="row"
-              spacing={2}
-              justifyContent="space-between"
-              alignItems={'center'}
-              mb={3}
-            >
-              <Box>
-                {title ? <Typography variant="h5">{title}</Typography> : ''}
+    const seriesareachart = [
+        {
+            data: dataSource?.prices.slice(0, 20),
+        }
+    ];
 
-                {subtitle ? (
-                  <Typography variant="subtitle2" color="textSecondary">
-                    {subtitle}
-                  </Typography>
-                ) : (
-                  ''
-                )}
-              </Box>
-              {action}
-            </Stack>
-          ) : null}
+    const optionsareachart: Props = {
+        chart: {
+            id: 'area-chart',
+            toolbar: {
+                show: false,
+            },
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            width: '3',
+            curve: 'smooth',
+        },
+        colors: dataSource?.percent_change >= 0 ? ['#1CBF67'] : ['#FF3030'],
+        fill: {
+            gradient: {
+                shade: customizer.activeMode === 'dark' ? 'dark' : 'light',
+                type: "vertical",
+                shadeIntensity: 0.5,
+                gradientToColors: undefined,
+                inverseColors: true,
+                opacityFrom: 0.8,
+                opacityTo: 0,
+                stops: [0, 90, 100],
+            },
+        },
+        xaxis: {
+            show: false,
+            labels: {
+                show: false
+            },
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false
+            }
+        },
+        yaxis: {
+            labels: {
+                show: false,
+            },
+        },
+        legend: {
+            show: true,
+            position: 'bottom',
+            width: '50px',
+        },
+        grid: {
+            show: false,
+        },
+        tooltip: {
+            enabled: false,
+        },
+    };
 
-          {children}
-        </CardContent>
-      )}
+    const CryptoCard = styled(Card)(() => ({
+        width: '320px',
+        height: '200px',
+        background: customizer.activeMode === 'dark' ? '#212121' : '#FFFFFF'
+    }));
 
-      {middlecontent}
-      {footer}
-    </Card>
-  );
+    return (
+        <CryptoCard
+            sx={{ padding: '10px 20px', border: !customizer.isCardShadow ? `1px solid ${borderColor}` : 'none', borderRadius: 3 }}
+            elevation={customizer.isCardShadow ? 9 : 0}
+            variant={!customizer.isCardShadow ? 'outlined' : undefined}
+        >
+            <Box className='dashboard-card-crypto'>
+                <div className='crypto-info'>
+                    <Avatar sx={{ width: 30, height: 30, marginRight: 2 }} src={dataSource?.image_url} alt='' />
+                    <div>
+                        <p className='crypto-name'>{dataSource?.name}</p>
+                        <p className='crypto-base'>{dataSource?.base}</p>
+                    </div>
+                </div>
+                {
+                    dataSource?.percent_change >= 0
+                        ? <IconTrendingUp color='#1CBF67' />
+                        : <IconTrendingDown color='#FF3030' />
+                }
+            </Box>
+            <Box className='dashboard-card-graph'>
+                <div style={{ width: '120px' }}>
+                    <p className='crypto-price'>${dataSource?.latest}</p>
+                    <p className='crypto-raise' style={{ color: dataSource?.percent_change >= 0 ? '#1CBF67' : '#FF3030' }}>
+                        {
+                            dataSource?.percent_change
+                                ? (dataSource?.percent_change * 100).toFixed(2)
+                                : 0
+                        }%
+                    </p>
+                </div>
+                <div className='crypto-graph'>
+                    <Chart options={optionsareachart} series={seriesareachart} type="area" width={180} height={120} />
+                </div>
+            </Box>
+        </CryptoCard>
+    );
 };
 
 export default DashboardCard;
