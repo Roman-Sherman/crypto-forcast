@@ -25,7 +25,8 @@ const DashboardTable = () => {
         {
             field: '#',
             headerName: '#',
-            width: '20px',
+            width: '30px',
+            align: 'center',
         },
         {
             field: 'name',
