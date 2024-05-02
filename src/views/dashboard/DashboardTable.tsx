@@ -24,7 +24,8 @@ const DashboardTable = () => {
         {
             field: '#',
             headerName: '#',
-            width: '20px',
+            width: '30px',
+            align: 'center',
         },
         {
             field: 'name',
@@ -34,7 +35,7 @@ const DashboardTable = () => {
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                     <Avatar src={record?.image_url} sx={{ width: 28, height: 28 }} />
                     <Typography sx={{ marginLeft: 1 }}>{record?.name}</Typography>
-                    <Typography sx={{ marginLeft: 1, color: '#9B9B9B' }}>{record?.base}</Typography>
+                    <Typography sx={{ marginLeft: 1, color: '#808080' }}>{record?.base}</Typography>
                 </Box>
             )
         },
