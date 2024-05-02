@@ -15,12 +15,12 @@ const DashboardListItem = ({ dataSource }: any) => {
             <div className="dashboard-list-item-crypto">
                 <Avatar src={dataSource?.image_url} sx={{ width: 35, height: 35, marginRight: "10px" }}></Avatar>
                 <div>
-                    <Typography variant="h6">{dataSource?.name}</Typography>
+                    <Typography sx={{ fontSize: 16 }}>{dataSource?.name}</Typography>
                     <Typography sx={{ color: "#808080", marginTop: "3px", fontSize: 12 }}>{dataSource?.base}</Typography>
                 </div>
             </div>
             <div>
-                <Typography align="right" variant="h6">{formatterCurrency.format(dataSource?.latest)}</Typography>
+                <Typography align="right" sx={{ fontSize: 16 }}>{formatterCurrency.format(dataSource?.latest)}</Typography>
                 <Typography align="right" sx={{ fontSize: 12, marginTop: "3px", color: dataSource?.percent_change >= 0 ? '#1CBF67' : '#FF5F52', fontWeight: 1000 }}>
                     {
                         dataSource?.percent_change
@@ -36,7 +36,7 @@ const DashboardListItem = ({ dataSource }: any) => {
 const DashboardListItems = ({ title, dataSource }: any) => {
     return (
         <Box sx={{ marginBottom: 6 }}>
-            <Typography variant="h5" sx={{ fontSize: 21 }}>{ title }</Typography>
+            <Typography sx={{ fontSize: 18, fontWeight: 700 }}>{ title }</Typography>
 
             {
                 dataSource.map((item: any, index: number) => (
