@@ -1,3 +1,10 @@
 .swiper-wrapper {
     max-width: 900px;
 }
+
+.dashboard-table-chart {
+    height: 45px !important;
+    min-height: 45px !important;
+
+    margin-top: -45px;
+}

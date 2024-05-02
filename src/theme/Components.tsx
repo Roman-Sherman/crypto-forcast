@@ -245,16 +245,41 @@ const components: any = (theme: Theme) => {
         },
       },
     },
+    MuiTable: {
+      styleOverrides: {
+        root: {
+          borderCollapse: 'separate',
+          borderSpacing: '0 10px',
+          padding: '0 16px',
+
+          '& td': {
+            padding: '16px'
+          },
+          '& th': {
+            padding: '16px'
+          }
+        },
+      },
+    },
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottom: `1px solid ${theme.palette.grey[100]}`,
+          border: 'none',
+          padding: '0 16px'
         },
       },
     },
     MuiTableRow: {
       styleOverrides: {
         root: {
+          '& td:first-of-type': {
+            borderTopLeftRadius: 10,
+            borderBottomLeftRadius: 10,
+          },
+          '& td:last-of-type': {
+            borderTopRightRadius: 10,
+            borderBottomRightRadius: 10,
+          },
           '&:last-child td': {
             borderBottom: 0,
           },

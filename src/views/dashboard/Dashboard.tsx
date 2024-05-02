@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Grid, Box } from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
 import { useDispatch } from "src/store/Store";
 import { fetchCryptoDataSet } from "src/store/crypto/CryptoSlice";
 
@@ -16,11 +16,14 @@ const DashboardPage = () => {
 
     return (
         <Grid container>
+            <Grid item xs={12}>
+                <Typography variant="h3" sx={{ marginBottom: 2 }}>Dashboard</Typography>
+            </Grid>
             <Grid item xs={12} md={9}>
                 <Box sx={{ width: "100%" }}>
                     <DashboardCards />
                 </Box>
-                <Box>
+                <Box sx={{ marginTop: 5 }}>
                     <DashboardTable />
                 </Box>
             </Grid>
