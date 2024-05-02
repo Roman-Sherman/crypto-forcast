@@ -1,5 +1,6 @@
 import { AppState, useSelector } from "src/store/Store";
 import { Box, Avatar, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import Chart, { Props } from 'react-apexcharts';
 import PaginationTable from "src/components/table/PaginationTable";
 
@@ -31,11 +32,13 @@ const DashboardTable = () => {
             headerName: 'Name',
             width: '100px',
             render: (record: any) => (
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Avatar src={record?.image_url} sx={{ width: 28, height: 28 }} />
-                    <Typography sx={{ marginLeft: 1 }}>{record?.name}</Typography>
-                    <Typography sx={{ marginLeft: 1, color: '#9B9B9B' }}>{record?.base}</Typography>
-                </Box>
+                <Link to='/'>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Avatar src={record?.image_url} sx={{ width: 28, height: 28 }} />
+                        <Typography sx={{ marginLeft: 1, color: customizer.activeMode === 'dark' ? '#FFFFFF' : '#2A3547' }}>{record?.name}</Typography>
+                        <Typography sx={{ marginLeft: 1, color: '#9B9B9B' }}>{record?.base}</Typography>
+                    </Box>
+                </Link>
             )
         },
         {
