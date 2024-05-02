@@ -16,11 +16,10 @@ const DashboardPage = () => {
 
     return (
         <Grid container>
-            <Grid item xs={12}>
-                <Typography variant="h3" sx={{ marginBottom: 2 }}>Dashboard</Typography>
-            </Grid>
             <Grid item xs={12} md={9}>
-                <Box sx={{ width: "100%" }}>
+                <Typography variant="h3" sx={{ marginBottom: 2 }}>Dashboard</Typography>
+
+                <Box sx={{ width: "100%", padding: "0 15px" }}>
                     <DashboardCards />
                 </Box>
                 <Box sx={{ marginTop: 5 }}>
