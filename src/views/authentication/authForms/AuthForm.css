@@ -1,17 +1,21 @@
 .submit-btn {
     color: #FFFFFF;
-    background: linear-gradient(to right, #2E439A, #0E1843);
-    box-shadow: 3px 0 0 #00FFFC !important;
+    background: #24B47E;
+}
+
+.submit-btn:hover {
+    color: #FFFFFF;
+    background-color: #24B47E !important;
 }
 
 .link-btn {
-    color: #00FFFC !important;
+    color: #24B47E !important;
     font-weight: bold !important;
     background: transparent !important;
 }
 
 .link-btn:hover {
-    color: #00FFFC;
+    color: #24B47E;
     background: transparent;
     font-weight: bolder;
 }

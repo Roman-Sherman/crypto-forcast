@@ -4,7 +4,7 @@ const baselightTheme = {
   direction: 'ltr',
   palette: {
     primary: {
-      main: '#5D87FF',
+      main: '#24B47E',
       light: '#ECF2FF',
       dark: '#4570EA',
     },
@@ -67,7 +67,7 @@ const baseDarkTheme = {
   direction: 'ltr',
   palette: {
     primary: {
-      main: '#5D87FF',
+      main: '#24B47E',
       light: '#ECF2FF',
       dark: '#4570EA',
     },

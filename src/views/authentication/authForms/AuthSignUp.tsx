@@ -1,5 +1,6 @@
 import { Box, Typography, Button, Stack } from '@mui/material';
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
@@ -19,7 +20,7 @@ const validationSchema = yup.object({
     }),
 });
 
-const AuthRegister = () => {
+const AuthSignUp = () => {
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -91,11 +92,11 @@ const AuthRegister = () => {
                 </Box>
             </form>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Typography>Already have an account?</Typography> 
-                <Button className='link-btn' onClick={() => console.log('Sign In')}>Sign In</Button>
+                <Typography>Already have an account?</Typography>&nbsp;
+                <Link className='link-btn' to='/auth/sign-in'>Sign In</Link>
             </Box>
         </>
     );
 }
 
-export default AuthRegister;
+export default AuthSignUp;
