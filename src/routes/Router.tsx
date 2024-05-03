@@ -7,8 +7,8 @@ const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
 const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')));
 
 /* ****Pages***** */
-const SignInPage = Loadable(lazy(() => import('../views/authentication/authForms/AuthSignIn')));
-const SignUpPage = Loadable(lazy(() => import('../views/authentication/authForms/AuthSignUp')));
+const SignInPage = Loadable(lazy(() => import('../views/authentication/SignIn')));
+const SignUpPage = Loadable(lazy(() => import('../views/authentication/SignUp')));
 const DashboardPage = Loadable(lazy(() => import('../views/dashboard/Dashboard')));
 const PredictionPage = Loadable(lazy(() => import('../views/prediction/Prediction')));
 const PortfolioPage = Loadable(lazy(() => import('../views/portfolio/Portfolio')));

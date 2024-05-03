@@ -5,6 +5,7 @@ import {
     Stack,
 } from '@mui/material';
 import { useFormik } from 'formik';
+import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
@@ -20,7 +21,7 @@ const validationSchema = yup.object({
         .required('Password is required')
 });
 
-const AuthLogin = () => {
+const AuthSignIn = () => {
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -82,11 +83,11 @@ const AuthLogin = () => {
                 </Box>
             </form>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Typography>New to KS.GAME?</Typography> 
-                <Button className='link-btn' onClick={() => console.log('sign up')}>Sign Up</Button>
+                <Typography>New to Crypto Predictor?</Typography> &nbsp;
+                <Link className='link-btn' to='/auth/sign-up'>Sign Up</Link>
             </Box>
         </>
     );
 }
 
-export default AuthLogin;
+export default AuthSignIn;
