@@ -22,7 +22,7 @@ const DashboardPage = () => {
                 <Box sx={{ width: "100%", padding: "0 15px" }}>
                     <DashboardCards />
                 </Box>
-                <Box sx={{ marginTop: 5 }}>
+                <Box sx={{ margin: '30px 0' }}>
                     <DashboardTable />
                 </Box>
             </Grid>
