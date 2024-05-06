@@ -11,6 +11,7 @@ const SignInPage = Loadable(lazy(() => import('../views/authentication/SignIn'))
 const SignUpPage = Loadable(lazy(() => import('../views/authentication/SignUp')));
 const DashboardPage = Loadable(lazy(() => import('../views/dashboard/Dashboard')));
 const PredictionPage = Loadable(lazy(() => import('../views/prediction/Prediction')));
+const PredictionGraphPage = Loadable(lazy(() => import('../views/prediction/PredictionGraph')));
 const PortfolioPage = Loadable(lazy(() => import('../views/portfolio/Portfolio')));
 const Error = Loadable(lazy(() => import('../views/authentication/Error')));
 
@@ -22,6 +23,7 @@ const Router = [
       { path: '/', element: <Navigate to="/dashboard" /> },
       { path: '/dashboard', exact: true, element: <DashboardPage /> },
       { path: '/prediction', exact: true, element: <PredictionPage /> },
+      { path: '/prediction/:symbol', exact: true, element: <PredictionGraphPage /> },
       { path: '/portfolio', exact: true, element: <PortfolioPage /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],

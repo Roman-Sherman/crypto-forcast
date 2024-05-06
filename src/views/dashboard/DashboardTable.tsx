@@ -33,7 +33,7 @@ const DashboardTable = () => {
             headerName: 'Name',
             width: '100px',
             render: (record: any) => (
-                <Link to='/'>
+                <Link to={'/prediction/' + record?.coin_id}>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
                         <Avatar src={record?.image_url} sx={{ width: 28, height: 28 }} />
                         <Typography sx={{ marginLeft: 1, color: customizer.activeMode === 'dark' ? '#FFFFFF' : '#2A3547' }}>{record?.name}</Typography>
