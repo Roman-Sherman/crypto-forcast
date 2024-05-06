@@ -17,7 +17,7 @@ const DashboardCard = ({
     const seriesareachart = [
         {
             name: 'crypto price graph',
-            data: dataSource?.prices?.slice(0, 10),
+            data: dataSource?.prices?.slice(0, 50),
         }
     ];
 
