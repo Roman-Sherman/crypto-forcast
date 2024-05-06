@@ -27,7 +27,7 @@ export const fetchCryptoDataSet = () => async (dispatch: AppDispatch) => {
         const result = responseSearch.data?.data.map((item: any) => {
             return { 
                 ...item,
-                ...responseSummary.data?.data.find((element: any) => item.base === element.base),
+                prices: responseSummary.data?.data.find((element: any) => item.base === element.base)?.prices?.reverse(),
                 coin_id: coingecko.data.find((element: any) => item.base.toLowerCase() === element.symbol)?.id,
             }
         })
