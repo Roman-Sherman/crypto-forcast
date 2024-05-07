@@ -1,12 +1,24 @@
+import { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router";
-import { AppState, useSelector } from "src/store/Store";
+import { AppState, useDispatch, useSelector } from "src/store/Store";
+import { fetchCryptoPrediction } from "src/store/crypto/CryptoSlice";
 
 const PredictionGraphPage = () => {
+    const dispatch = useDispatch();
     const { symbol } = useParams();
-    const { cryptoDataSet } = useSelector((state: AppState) => state.cryptoReducer);
+    const { cryptoPrediction } = useSelector((state: AppState) => state.cryptoReducer);
 
-    console.log(symbol, cryptoDataSet)
+    useEffect(() => {
+        const payload = {
+            coin: symbol,
+            days: 1
+        }
+
+        dispatch(fetchCryptoPrediction(payload));
+
+        console.log("prediction: ", cryptoPrediction)
+    }, [dispatch, symbol]);
 
     return (
         <Box>
