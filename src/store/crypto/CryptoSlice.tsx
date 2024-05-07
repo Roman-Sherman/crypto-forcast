@@ -4,7 +4,8 @@ import { AppDispatch } from 'src/store/Store';
 
 const initialState = {
     cryptoDataSet: [],
-    cryptoPrediction: []
+    cryptoHistories: [],
+    cryptoPrediction: [],
 };
 
 export const CryptoSlice = createSlice({
@@ -14,13 +15,16 @@ export const CryptoSlice = createSlice({
         setCryptoDataSet: (state, action) => {
             state.cryptoDataSet = action.payload;
         },
+        setCryptoHistories: (state, action) => {
+            state.cryptoHistories = action.payload;
+        },
         setCryptoPrediction: (state, action) => {
             state.cryptoPrediction = action.payload;
-        }
+        },
     },
 });
 
-export const { setCryptoDataSet, setCryptoPrediction } = CryptoSlice.actions;
+export const { setCryptoDataSet, setCryptoHistories, setCryptoPrediction } = CryptoSlice.actions;
 
 export const fetchCryptoDataSet = () => async (dispatch: AppDispatch) => {
     try {
@@ -29,7 +33,7 @@ export const fetchCryptoDataSet = () => async (dispatch: AppDispatch) => {
         const coingecko = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&api_key=${process.env.REACT_APP_API_KEY}`);
 
         const result = responseSearch.data?.data.map((item: any) => {
-            return { 
+            return {
                 ...item,
                 prices: responseSummary.data?.data.find((element: any) => item.base === element.base)?.prices?.reverse(),
                 coin_id: coingecko.data.find((element: any) => item.base.toLowerCase() === element.symbol)?.id,
@@ -49,14 +53,19 @@ export const fetchCryptoPrediction = ({ coin, days }: any) => async (dispatch: A
             days: days
         }
 
-        console.log(payload)
-
         const response = await axios.post('http://localhost:5000/api/prediction', payload);
 
-
-        console.log("response: ", response.data)
-
         dispatch(setCryptoPrediction(response.data));
+    } catch (err) {
+        throw new Error();
+    }
+};
+
+export const fetchCryptoHistories = () => async (dispatch: AppDispatch) => {
+    try {
+        const response = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?vs_currency=usd&days=7&api_key=${process.env.REACT_APP_API_KEY}`);
+
+        dispatch(setCryptoHistories(response.data));
     } catch (err) {
         throw new Error();
     }
