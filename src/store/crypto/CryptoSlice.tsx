@@ -49,20 +49,37 @@ export const fetchCryptoPrediction = ({ coin, period }: any) => async (dispatch:
     try {
         const payload = {
             coin: coin,
-            period: period
+            period: period === 'week' ? 'week' : 'day'
         }
 
         const response = await axios.post('http://localhost:5000/api/prediction', payload);
 
-        dispatch(setCryptoPrediction(response.data));
+        let limit = 0;
+
+        switch(period) {
+            case '1h':
+                limit = 12;
+                break;
+            case '4h':
+                limit = 48;
+                break;
+            case '12h':
+                limit = 144;
+                break;
+            default:
+                limit = response.data.length;
+                break;
+        }
+
+        dispatch(setCryptoPrediction(response.data.slice(0, limit)));
     } catch (err) {
         throw new Error();
     }
 };
 
-export const fetchCryptoHistories = () => async (dispatch: AppDispatch) => {
+export const fetchCryptoHistories = ({ coin, period }: any) => async (dispatch: AppDispatch) => {
     try {
-        const response = await axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/ohlc?vs_currency=usd&days=7&api_key=${process.env.REACT_APP_API_KEY}`);
+        const response = await axios.get(`https://api.coinbase.com/v2/prices/${coin}-USD/historic?sort=rank&period=${period}`);
 
         dispatch(setCryptoHistories(response.data));
     } catch (err) {
