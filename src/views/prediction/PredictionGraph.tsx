@@ -8,49 +8,75 @@ import { fetchCryptoPrediction, fetchCryptoHistories } from "src/store/crypto/Cr
 const PredictionGraphPage = () => {
     const dispatch = useDispatch();
     const { symbol } = useParams();
-    const { cryptoHistories } = useSelector((state: AppState) => state.cryptoReducer);
+    const customizer = useSelector((state: AppState) => state.customizer);
+    const { cryptoPrediction } = useSelector((state: AppState) => state.cryptoReducer);
 
-    const optionscandlestickchart: Props = {
+    const optionsareachart: Props = {
         chart: {
-            height: 350,
+            id: 'area-chart',
             fontFamily: "'Plus Jakarta Sans', sans-serif",
             foreColor: '#adb0bb',
+            zoom: {
+                enabled: true,
+            },
             toolbar: {
                 show: false,
             },
         },
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            width: '3',
+            curve: 'smooth',
+        },
+        colors: ['#24B47E'],
+        fill: {
+            gradient: {
+                shade: customizer.activeMode === 'dark' ? 'dark' : 'light',
+                type: "vertical",
+                shadeIntensity: 0.5,
+                gradientToColors: undefined,
+                inverseColors: true,
+                opacityFrom: 0.8,
+                opacityTo: 0,
+                stops: [0, 90, 100],
+            },
+        },
         xaxis: {
             type: 'datetime',
+            categories: cryptoPrediction?.map(item => item[0]),
         },
         yaxis: {
-            tooltip: {
-                enabled: true,
+            opposite: false,
+            labels: {
+                show: true,
             },
         },
-        plotOptions: {
-            candlestick: {
-                wick: {
-                    useFillColor: true
-                }
-            },
-        },
-        tooltip: {
-            theme: 'dark',
+        legend: {
+            show: true,
+            position: 'bottom',
+            width: '50px',
         },
         grid: {
             show: false,
         },
+        tooltip: {
+            theme: 'dark',
+            fillSeriesColor: false,
+        },
     };
-    const seriecandlestickchart: any = [
+    const seriesareachart = [
         {
-            data: cryptoHistories
+            name: 'Crypto Prediction',
+            data: cryptoPrediction?.map((item: any) => item[1].toFixed(2)),
         },
     ];
 
     useEffect(() => {
         const payload = {
             coin: symbol,
-            days: 1
+            period: 'day'
         }
 
         dispatch(fetchCryptoHistories());
@@ -62,13 +88,7 @@ const PredictionGraphPage = () => {
             <Typography variant="h3" sx={{ marginBottom: 2 }}>Crypto Prediction</Typography>
 
             <Box>
-                <Chart
-                    options={optionscandlestickchart}
-                    series={seriecandlestickchart}
-                    type="candlestick"
-                    height="500px"
-                    width={'95%'}
-                />
+                <Chart options={optionsareachart} series={seriesareachart} type="area" height="600px" />
             </Box>
         </Box>
     )
