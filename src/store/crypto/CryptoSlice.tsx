@@ -19,7 +19,6 @@ export const CryptoSlice = createSlice({
             state.cryptoHistories = action.payload;
         },
         setCryptoPrediction: (state, action) => {
-            console.log(action.payload)
             state.cryptoPrediction = action.payload;
         },
     },
