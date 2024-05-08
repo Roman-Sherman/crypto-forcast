@@ -380,7 +380,7 @@ const components: any = (theme: Theme) => {
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.grey[100],
+            borderColor: '#212121',
           },
         },
         input: {
