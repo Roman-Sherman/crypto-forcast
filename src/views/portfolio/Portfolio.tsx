@@ -1,6 +1,12 @@
+import { Box, Typography } from "@mui/material";
+
 const PortfolioPage = () => {
     return (
-        <div></div>
+        <Box>
+            <Typography variant="h3" sx={{ marginBottom: 2 }}>Portfolio</Typography>
+
+            
+        </Box>
     )
 }
 
