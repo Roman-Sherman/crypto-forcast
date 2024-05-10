@@ -17,7 +17,7 @@ const DashboardPage = () => {
     return (
         <Grid container>
             <Grid item xs={12} md={9}>
-                <Typography variant="h3" sx={{ marginBottom: 2 }}>Dashboard</Typography>
+                <Typography variant="h3" sx={{ marginBottom: 2 }}>Crypto Dashboard</Typography>
 
                 <Box sx={{ width: "100%", padding: "0 15px" }}>
                     <DashboardCards />
