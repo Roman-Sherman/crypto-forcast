@@ -1,7 +1,9 @@
+pymongo
 flask
-flask-sqlalchemy
-flask-bcrypt
-python-dotenv
-flask-session
-redis
+flask-restful
+flask-jwt-extended
+passlib
 flask-cors
+requests
+numpy
+scikit-learn

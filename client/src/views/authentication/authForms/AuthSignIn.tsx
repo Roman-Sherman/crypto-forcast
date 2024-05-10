@@ -12,6 +12,8 @@ import CustomTextField from 'src/components/forms/theme-elements/CustomTextField
 import CustomFormLabel from 'src/components/forms/theme-elements/CustomFormLabel';
 
 import "./AuthForm.css";
+import { useDispatch } from 'src/store/Store';
+import { fetchSignIn } from 'src/store/auth/AuthSlice';
 
 const validationSchema = yup.object({
     email: yup.string().email('Enter a valid email').required('Email is required'),
@@ -22,14 +24,15 @@ const validationSchema = yup.object({
 });
 
 const AuthSignIn = () => {
+    const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
             email: '',
             password: ''
         },
         validationSchema: validationSchema,
-        onSubmit: () => {
-            console.log('submit')
+        onSubmit: (value) => {
+            dispatch(fetchSignIn(value));
         },
     });
 

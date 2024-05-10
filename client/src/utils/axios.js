@@ -1,6 +1,8 @@
  import axios from 'axios';
 
- const axiosServices = axios.create();
+ const axiosServices = axios.create({
+    withCredentials: true
+ });
 
  axiosServices.defaults.headers.post['Content-Type'] = 'application/json';
  

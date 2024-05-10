@@ -1,13 +1,24 @@
-from flask_sqlalchemy import SQLAlchemy
-from uuid import uuid4
+from pymongo import MongoClient
 
-db = SQLAlchemy()
+client = MongoClient('mongodb://localhost:27017')
+db = client['crypto_forcast']
 
-def get_uuid():
-    return uuid4().hex
+class User:
+    def __init__(self, email, password):
+        self.email = email
+        self.password = password
 
-class User(db.Model):
-    __tablename__ = "users"
-    id = db.Column(db.String(32), primary_key=True, unique=True, default=get_uuid)
-    email = db.Column(db.String(345), unique=True)
-    password = db.Column(db.Text, nullable=False)
+    @classmethod
+    def find_by_email(cls, email):
+        user = db.users.find_one({'email': email})
+
+        if user:
+            return cls(user['email'], user['password'])
+            
+        return None
+
+    def save(self):
+        db.users.insert_one({
+            'email': self.email,
+            'password': self.password
+        })
