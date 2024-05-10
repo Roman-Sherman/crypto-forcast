@@ -11,10 +11,8 @@ class User:
     @classmethod
     def find_by_email(cls, email):
         user = db.users.find_one({'email': email})
-
         if user:
             return cls(user['email'], user['password'])
-            
         return None
 
     def save(self):
