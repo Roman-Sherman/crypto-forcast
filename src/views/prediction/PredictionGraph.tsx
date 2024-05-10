@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, MenuItem } from "@mui/material";
+import { Box, Typography, MenuItem, useMediaQuery } from "@mui/material";
 import { useParams } from "react-router";
 import Chart, { Props } from 'react-apexcharts';
 import { AppState, useDispatch, useSelector } from "src/store/Store";
@@ -11,7 +11,7 @@ const PredictionGraphPage = () => {
     const { symbol } = useParams();
     const customizer = useSelector((state: AppState) => state.customizer);
     const { cryptoPrediction } = useSelector((state: AppState) => state.cryptoReducer);
-
+    const mdDown = useMediaQuery((theme: any) => theme.breakpoints.down('md'));
     const [period, setPeriod] = useState('1h');
 
     const optionsareachart: Props = {
@@ -104,7 +104,7 @@ const PredictionGraphPage = () => {
             </CustomSelect>
 
             <Box>
-                <Chart options={optionsareachart} series={seriesareachart} type="area" height="700px" />
+                <Chart options={optionsareachart} series={seriesareachart} type="area" height={mdDown ? "300px" : "700px"} />
             </Box>
         </Box>
     )
