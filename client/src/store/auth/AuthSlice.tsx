@@ -3,8 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { AppDispatch } from 'src/store/Store';
 
 const initialState = {
-    isAuthenticated: false,
-    token: null
+    isAuthenticated: localStorage.getItem('token') ? true : false,
 };
 
 export const AuthSlice = createSlice({
@@ -12,11 +11,8 @@ export const AuthSlice = createSlice({
     initialState,
     reducers: {
         signin: (state, action) => {
-            console.log('signin: ', action.payload)
             if (action.payload.access_token) {
-                console.log('success: ', action.payload)
                 state.isAuthenticated = true;
-                state.token = action.payload.access_token;
 
                 localStorage.setItem('token', action.payload.access_token);
             }
@@ -26,7 +22,6 @@ export const AuthSlice = createSlice({
         },
         signout: (state) => {
             state.isAuthenticated = false;
-            state.token = null;
 
             localStorage.removeItem('token');
         }

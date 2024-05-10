@@ -22,8 +22,6 @@ const App: FC = () => {
       setAuthToken(localStorage.token);
     }
 
-    // dispatch(fetchUser());
-
     window.addEventListener('storage', () => {
       if (!localStorage.token) dispatch(signout());
     });
