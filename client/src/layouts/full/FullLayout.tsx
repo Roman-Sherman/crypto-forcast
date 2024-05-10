@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { styled, Container, Box, useTheme } from '@mui/material';
 import { useSelector } from 'src/store/Store';
-import { Outlet } from 'react-router-dom';
 import { AppState } from 'src/store/Store';
 import Header from './vertical/header/Header';
 import Sidebar from './vertical/sidebar/Sidebar';
+import PrivateRoute from 'src/routes/Private.Routes';
 
 const MainWrapper = styled('div')(() => ({
   display: 'flex',
@@ -60,7 +60,7 @@ const FullLayout: FC = () => {
           {/* PageContent */}
           {/* ------------------------------------------- */}
           <Box sx={{ minHeight: 'calc(100vh - 170px)', width: '100%' }}>
-            <Outlet />
+            <PrivateRoute />
           </Box>
           {/* ------------------------------------------- */}
           {/* End Page */}
