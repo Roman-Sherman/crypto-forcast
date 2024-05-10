@@ -32,8 +32,6 @@ const AuthSignUp = () => {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            console.log(values)
-
             dispatch(fetchSignUp(values));
         },
     });
