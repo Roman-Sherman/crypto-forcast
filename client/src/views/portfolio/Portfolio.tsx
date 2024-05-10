@@ -35,7 +35,7 @@ const columns = [
         field: 'price',
         headerName: 'Price(USD)',
         align: 'right',
-        render: (record: any) => formatterCurrency.format(record?.total)
+        render: (record: any) => formatterCurrency.format(record?.price)
     },
     {
         field: 'total',
