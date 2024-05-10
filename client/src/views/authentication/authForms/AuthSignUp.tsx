@@ -2,6 +2,8 @@ import { Box, Typography, Button, Stack } from '@mui/material';
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { useDispatch } from 'src/store/Store';
+import { fetchSignUp } from 'src/store/auth/AuthSlice';
 
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField';
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
@@ -21,6 +23,7 @@ const validationSchema = yup.object({
 });
 
 const AuthSignUp = () => {
+    const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -30,6 +33,8 @@ const AuthSignUp = () => {
         validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log(values)
+
+            dispatch(fetchSignUp(values));
         },
     });
 

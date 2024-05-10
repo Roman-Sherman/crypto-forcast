@@ -3,7 +3,6 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import MinMaxScaler
 from datetime import datetime, timedelta
-from utils import get_market_chart
 
 def get_market_chart(coin, period):
     # Get OHLC data
@@ -45,6 +44,3 @@ def get_market_chart(coin, period):
     predictions = [[date, pred[0]] for date, pred in zip(dates, y_pred)]
 
     return predictions
-
-if __name__ == '__main__':
-    app.run(debug=True)

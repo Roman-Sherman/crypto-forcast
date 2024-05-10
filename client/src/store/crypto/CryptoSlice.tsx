@@ -28,8 +28,8 @@ export const { setCryptoDataSet, setCryptoHistories, setCryptoPrediction } = Cry
 
 export const fetchCryptoDataSet = () => async (dispatch: AppDispatch) => {
     try {
-        const responseSummary = await axios.get('https://coinbase.com/api/v2/assets/summary?include_prices=true&resolution=week&filter=listed&base=USD');
-        const responseSearch = await axios.get('https://coinbase.com/api/v2/assets/search?base=USD&filter=listed&include_prices=true&resolution=week');
+        const responseSummary = await axios.get('http://localhost:5000/api/get_coins_summary');
+        const responseSearch = await axios.get('http://localhost:5000/api/get_coins_search');
 
         const result = responseSearch.data?.data.map((item: any) => {
             return {
@@ -78,7 +78,12 @@ export const fetchCryptoPrediction = ({ coin, period }: any) => async (dispatch:
 
 export const fetchCryptoHistories = ({ coin, period }: any) => async (dispatch: AppDispatch) => {
     try {
-        const response = await axios.get(`https://api.coinbase.com/v2/prices/${coin}-USD/historic?sort=rank&period=${period}`);
+        const payload = {
+            coin: coin,
+            period: period === 'week' ? 'week' : 'day'
+        }
+
+        const response = await axios.post('http://localhost:5000/api/get_coins_histories', payload);
 
         dispatch(setCryptoHistories(response.data));
     } catch (err) {

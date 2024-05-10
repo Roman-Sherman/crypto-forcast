@@ -5,7 +5,7 @@ import {
     Stack,
 } from '@mui/material';
 import { useFormik } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
@@ -25,14 +25,17 @@ const validationSchema = yup.object({
 
 const AuthSignIn = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const formik = useFormik({
         initialValues: {
             email: '',
             password: ''
         },
         validationSchema: validationSchema,
-        onSubmit: (value) => {
-            dispatch(fetchSignIn(value));
+        onSubmit: async (value) => {
+            await dispatch(fetchSignIn(value));
+
+            navigate('/');
         },
     });
 
