@@ -8,7 +8,6 @@ Welcome to the Cryptocurrency Forecast Project! This project aims to provide for
 - [Installation](#installation)
 - [Usage](#usage)
 - [Data](#data)
-- [Model Training](#model-training)
 - [Contributing](#contributing)
 - [License](#license)
 
