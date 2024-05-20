@@ -53,7 +53,8 @@ python forecast.py --coin BTC --start_date 2022-01-01 --end_date 2022-12-31
 
 The project requires historical cryptocurrency price data for training the models and generating forecasts. You can obtain this data from various sources such as:
 
-- [CoinGecko API](https://www.coingecko.com/en/api)
+- [Coinbase API](https://help.coinbase.com/en/developer-platform)
+- [CoinGecko API](https://www.coingecko.com/en/api) 
 - [CryptoCompare API](https://min-api.cryptocompare.com/)
 - [Yahoo Finance API](https://pypi.org/project/yfinance/)
 
