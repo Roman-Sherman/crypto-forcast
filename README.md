@@ -9,7 +9,6 @@ Welcome to the Cryptocurrency Forecast Project! This project aims to provide for
 - [Usage](#usage)
 - [Data](#data)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
@@ -70,6 +69,3 @@ Contributions are welcome! If you'd like to contribute to the project, please fo
 4. Push your branch (`git push origin feature-branch`).
 5. Create a new Pull Request.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
