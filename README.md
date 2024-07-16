@@ -2,6 +2,10 @@
 
 Welcome to the Cryptocurrency Forecast Project! This project aims to provide forecasts for various cryptocurrencies using machine learning models.
 
+<p align="center">
+  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*O25hRctFYP39SOLRm0fV1A.jpeg" alt="Image Description">
+</p>
+
 ## Table of Contents
 
 - [Overview](#overview)
